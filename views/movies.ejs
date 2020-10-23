@@ -1,0 +1,38 @@
+<html>
+<head>
+<title><%= titre %></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<style>
+main {
+padding:30px;
+}
+p {
+margin:30px 0 30px 0;
+}
+</style>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="/">Page d'accueil</a>
+</nav>
+<main>
+<h1><%= titre %></h1>
+<section class="movies-results">
+<%if (films && films.length > 0){%>
+
+<% films.forEach(function(film) { %>
+<p class="movie-result"><img src="<%=film.small_cover_image%>" alt="poster de <%= film.title %>"></img>
+<span class="title-movie"><a href="/films/<%=film.id%>"><%= film.title%></a></span>
+<span class="description-movie"><%= film.description_full.substring(0,300) %>...</span> Genres: <%= film.genre || film.genres.join(', ') %></p>
+<%});%>)
+<%}else{%>)
+<p>Il n'y a pas de films pour cette requête.</p>
+<%};%>)
+</section>
+</main>
+</body>
+</html>
